@@ -1,8 +1,9 @@
 import { StyleSheet } from "react-native";
 
+// Cria e exporta o objeto de estilos usando o StyleSheet do React Native
 export const styles = StyleSheet.create({
     safeArea: {
-        flex:1
+        flex:1 //ocupa todo o espaço
     },
     container: {
         flex: 1,
@@ -14,9 +15,10 @@ export const styles = StyleSheet.create({
         fontWeight: "bold",
         color: '#672389'
     },
-    describre: {
+    describe: {
         fontSize: 18,
         textAlign: 'center',
-        marginTop: 15
+        marginTop: 15,
+        color: '#672389'
     }
 });
