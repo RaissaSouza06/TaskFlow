@@ -3,9 +3,9 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { styles } from "./styles";
 
 export default function Home() {
-    function iniciarAplicacao(){
-        console.log("O botão foi pressionado!")
-    }
+  function iniciarAplicacao() {
+    console.log("O botão foi pressionado!")
+  }
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
@@ -21,13 +21,18 @@ export default function Home() {
             Organize sua tarefas de forma simples
           </Text>
 
-<Pressable 
-            onPress={iniciarAplicacao} 
-            style={({pressed}) => [styles.botao, pressed && styles.botaoPressionado]}
+          <Pressable
+            onPress={iniciarAplicacao}
+            style={({ pressed }) => [
+              styles.botao,
+              pressed && styles.botaoPressionado,
+            ]}
           >
-            <Text style={styles.textoBotao}>
-              {carregando ? "Carregando..." : "Começar"}
-            </Text>
+            {({ pressed }) => (
+              <Text style={styles.textoBotao}>
+                {pressed ? "Carregando..." : "Começar"}
+              </Text>
+            )}
           </Pressable>
         </View>
       </View>

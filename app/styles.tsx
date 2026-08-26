@@ -44,9 +44,8 @@ export const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 18
     },
-    botaoPressionado: {
-        opacity: 0.7,
-        backgroundColor: 'rgba(69, 194, 100, 0.87)',
-        transform: [{scale: 1.5}]
+    botaoPressionado:{
+        backgroundColor: '#a6c0f7ff',
+        transform: [{ scale: 1.1 }]
     }
 });
