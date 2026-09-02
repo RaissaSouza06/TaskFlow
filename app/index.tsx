@@ -1,11 +1,13 @@
 import { Image, Text, View, Pressable } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { styles } from "./styles";
+import {useState} from 'react';
 
 export default function Home() {
   function iniciarAplicacao() {
     console.log("O botão foi pressionado!")
   }
+  
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
