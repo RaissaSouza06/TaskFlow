@@ -1,9 +1,8 @@
-import { Image, Pressable, Text, View, Button} from 'react-native';
+import { Image, Pressable, Text, View } from 'react-native';
 import { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { styles } from './styles';
 import { router } from 'expo-router';
-
 
 export default function Home() {
     const [iniciado, setIniciado] = useState(false)
@@ -48,10 +47,6 @@ export default function Home() {
 
 
                         </Pressable>
-                        <Button
-                          title='configurações'
-                          onPress={()=> router.push("/configuracoes")}
-                        />
                 </View>
             </View>
         </SafeAreaView>
