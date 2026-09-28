@@ -1,5 +1,5 @@
 import { View, Text, Button } from 'react-native'
-import { styles } from '@/styles/global';
+import { styles } from '@/styles/global'
 import { router } from 'expo-router'
 import Botao from '@/components/Botao'
 
