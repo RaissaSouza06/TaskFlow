@@ -1,12 +1,16 @@
 import Botao from "@/components/Botao";
 import { useState } from "react";
 import { View, Text, TextInput, StyleSheet, Alert } from "react-native";
+import { carregarTarefas, salvarTarefas } from "@/utils/armazenamento";
+import { router } from "expo-router";
+import {Picker} from '@react-native-picker/picker'
 
 export default function AddTarefas() {
     const [titulo, setTitulo] = useState("")
     const [descricao, setDescricao] = useState("")
+    const [prioridade, setPrioridade] = useState("")
 
-    function salvar(){
+    async function salvar(){
         if (titulo.trim() === ""){
             Alert.alert("Atenção", "Digite o titulo da tarefa")
             return;
@@ -15,14 +19,28 @@ export default function AddTarefas() {
             Alert.alert("Atenção", "Digite a descrição da tarefa!")
             return;
         }
+        if (prioridade.trim() === ""){
+            setPrioridade("Baixa")
+        }
 
-        console.log("Validação ok, dados salvos com sucesso!")
-        setTitulo("")
-        setDescricao("")
+        const novaTarefa = {
+            id: Date.now().toString(),
+            titulo: titulo.trim(),
+            descricao: descricao.trim(),
+            prioridade: prioridade.trim()
+        }
+
+        const tarefas = await carregarTarefas();
+
+        const novaLista = [...tarefas, novaTarefa]
+
+        await salvarTarefas(novaLista);
+
+        Alert.alert("Sucesso", "Validação ok, dados salvos com sucesso")
+        router.replace("/tarefas/tarefas")
     }
 
     return (
-        <View>
             <View style={styles.container}>
                 <Text style={styles.label}>Título *</Text>
                 <TextInput
@@ -39,7 +57,18 @@ export default function AddTarefas() {
                     placeholder="Digite a descricao da tarefa"
                     multiline
                 />
-
+                <Text style={styles.label}>Prioridade *</Text>
+                <View style={styles.selectItem}>
+<                <Picker
+                    selectedValue={prioridade}
+                    onValueChange={(valor)=> setPrioridade(texto)}
+                >
+                    <Picker.Item label="Selecione..." value=""/>
+                    <Picker.Item label="Baixa" value="Baixa"/>
+                    <Picker.Item label="Média" value="Media"/>
+                    <Picker.Item label="Alta" value="Alta"/>
+                </Picker>>
+                </View>
                 <View style={{alignSelf: 'flex-end'}}>
                     <Botao
                         texto="Salvar"
@@ -47,7 +76,6 @@ export default function AddTarefas() {
                     />
                 </View>
             </View>
-        </View>
     )
 }
 
