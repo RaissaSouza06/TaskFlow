@@ -6,6 +6,7 @@ import { styles } from "@/styles/global";
 import { carregarTarefas } from "@/utils/armazenamento";
 import { useEffect, useState } from "react";
 
+// criando tipo para as tarefas
 type Tarefa = {
     id: string;
     titulo: string;
@@ -14,19 +15,17 @@ type Tarefa = {
 }
 
 export default function Tarefas() {
-    const [tarefas, setTarefas] = useState<Tarefa[]>([])
-    useEffect(()=> {
-        async function carregar(){
+
+    const [tarefas, setTarefas] = useState<Tarefa[]>([]) // coloca o tipo após o state
+
+    useEffect(()=>{ // vai ser executado apenas na criação da tela
+        async function carregar() {
             const dados = await carregarTarefas();
             setTarefas(dados);
         }
         carregar();
-    }, [])
+    }, []); // para executar apenas uma vez
 
-    // function voltarInicio() {
-    //     router.dismissAll()
-    //     router.push("/")
-    // }
 
     return (
         <View style={styles.container}>
@@ -44,6 +43,7 @@ export default function Tarefas() {
                                     prioridade={item.prioridade}
                                 />
                             </>
+
                 )}
 
                 ListEmptyComponent={
@@ -55,6 +55,10 @@ export default function Tarefas() {
             <Botao
                 texto="Add +"
                 onPress={()=>router.push("/tarefas/addTarefas")}
+            />
+            <Botao
+                texto="Configurações"
+                onPress={()=>router.push("/configuracoes")}
             />
         </View>
     )
