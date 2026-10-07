@@ -1,5 +1,5 @@
-import ItemProduto from "@/components/ItemProduto";
-import { FlatList, Text, View } from "react-native";
+import ItemProduto from "@/components/itemProduto";
+import { FlatList, View } from "react-native";
 
 const produtos = [
     {
