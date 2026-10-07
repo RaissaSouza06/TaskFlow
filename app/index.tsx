@@ -1,4 +1,4 @@
-import { Image, Text, View } from 'react-native';
+import { Image, Pressable, Text, View, Button } from 'react-native';
 import { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { styles } from '@/styles/global';
@@ -12,7 +12,7 @@ export default function Home() {
 
     function iniciarAplicacao() {
         setIniciado(true);
-        router.push("./tarefas/tarefas");
+        router.push("/tarefas/tarefas");
     }
     return (
         <SafeAreaView style={styles.safeArea}>
@@ -44,10 +44,9 @@ export default function Home() {
                     
 
                 </Card>
-                {/* tela de exercícios */}
-                <Botao 
+                <Botao
                     texto='Exercícios'
-                    onPress={() => router.push('/atividades/atividades')}
+                    onPress={()=>router.push("/atividades/atividade_aula10")}
                 />
             </View>
         </SafeAreaView>

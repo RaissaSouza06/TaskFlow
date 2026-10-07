@@ -1,4 +1,4 @@
-import ItemProduto from "@/components/itemProduto";
+import ItemProduto from "@/components/ItemProduto";
 import { FlatList, View } from "react-native";
 
 const produtos = [
